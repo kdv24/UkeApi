@@ -5,10 +5,14 @@ import './App.css';
 class App extends Component {
 
   render() {
+    var mine = document.querySelector('p');
 
     fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
     .then(function(response) {
-        return response.blob();
+        alert(response);
+    })
+    .then(function() {
+      alert("in the promise?");
     });
 
     return (
@@ -19,6 +23,7 @@ class App extends Component {
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
+          {mine}
         </p>
       </div>
     );
