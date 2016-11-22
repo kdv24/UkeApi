@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-// import $ from 'jquery';
+import $ from 'jquery';
 import axios from 'axios';
 
 class App extends Component {

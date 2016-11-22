@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import Photos from './photos.js';
 import './App.css';
 
 class App extends Component {
@@ -9,10 +10,10 @@ class App extends Component {
 
     fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
     .then(function(response) {
-        alert(response);
+        console.log("in the fetch: ");
     })
     .then(function() {
-      alert("in the promise?");
+      console.log("in the promise");
     });
 
     return (
@@ -25,6 +26,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
           {mine}
         </p>
+        <Photos/>
       </div>
     );
   }
