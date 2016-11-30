@@ -32,13 +32,27 @@ export default class Photos extends Component {
     });
   }
 
+  // photoMap() {
+  //
+  // }
+
 
   render() {
-    let all_the_marbles = this.photo_array;
+    this.fetchDemo();
+    let all_the_marbles = this.props.photo_array.map((photo, index) => {
+      let photo_id = photo.id;
+      let photo_title = photo.title;
     return (
       <div>
-          <div>{all_the_marbles}</div>
+        <p>{photo_id}</p>
+        <p>{photo_title}</p>
       </div>
     );
+  });
+  return (
+    <div>
+      <ul><li>{all_the_marbles}</li></ul>
+    </div>
+  )
   }
 }
