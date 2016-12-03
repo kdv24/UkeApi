@@ -22,18 +22,29 @@ export default class Photos extends Component {
     let style = {
       container: {
         display: "flex",
-        flexFlow: "rowWrap",
+        flexWrap: "wrap",
         alignItems: "flexStart",
-        justifyContent: "spaceBetween"
+        justifyContent: "center"
+      },
+      outerContainer: {
+        padding: 10,
+        display: "flex",
+        justifyContent: "spaceAround",
+
       },
       background: {
-        backgroundColor: "#EBFFFF"
+        backgroundColor: "blue"
       },
       grid: {
-        marginLeft: 20,
+        margin: 20,
+        padding: 5,
+        backgroundColor: "darkGray",
         gridColumn: {
           paddingLeft: 20
-        }
+        },
+        borderColor: "gray",
+        borderWidth: 2,
+        borderStyle: "solid"
       }
     }
     // let photo_array = this.state.photo_array;
@@ -41,8 +52,11 @@ export default class Photos extends Component {
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';
       return (
-        <div key={i}>
-            <div style={style.grid}>{photo.title}<img src={photo_url} alt="pugs" ></img></div>
+        <div key={i} style={style.outerContainer}>
+            <div style={style.grid}>
+              <img src={photo_url} alt="pugs" ></img>
+              <p>{photo.title}</p>
+            </div>
         </div>
       );
     });
@@ -55,22 +69,41 @@ export default class Photos extends Component {
         display: "flex",
         flexWrap: "wrap",
         alignItems: "flexStart",
-        justifyContent: "spaceBetween"
+        justifyContent: "center"
+      },
+      outerContainer: {
+        padding: 10,
+        display: "flex",
+        justifyContent: "spaceAround",
+        alignItems: "justifyContent"
+
       },
       background: {
         backgroundColor: "#EBFFFF"
       },
       grid: {
-        marginLeft: 20,
+        margin: 20,
         gridColumn: {
           paddingLeft: 20
         }
+      },
+      button: {
+        padding: 10,
+        margin: 5,
+        borderRadius: 10
+      },
+      border: {
+        borderColor: "gray",
+        borderWidth: 2,
+        borderStyle: "solid"
       }
     }
     return(
       <div>
         <h1>Photos List</h1>
-        <div style={style.background, style.container}>
+        <input style={style.button} placeholder="search tags"></input>
+        <button style={style.button} type="submit">button here</button>
+        <div style={style.container}>
             {this.photoMap()}
         </div>
       </div>
