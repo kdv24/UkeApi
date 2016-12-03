@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import style                from './style.js';
 
 export default class Photos extends Component {
   constructor(props) {
@@ -18,13 +19,30 @@ export default class Photos extends Component {
   }
 
   photoMap() {
+    let style = {
+      container: {
+        display: "flex",
+        flexFlow: "rowWrap",
+        alignItems: "flexStart",
+        justifyContent: "spaceBetween"
+      },
+      background: {
+        backgroundColor: "#EBFFFF"
+      },
+      grid: {
+        marginLeft: 20,
+        gridColumn: {
+          paddingLeft: 20
+        }
+      }
+    }
     // let photo_array = this.state.photo_array;
     let photo_titles = this.state.photo_array.map((photo, i) => {
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';
       return (
-        <div className="container" key={i}>
-            <ul><li style={{listStyle: "none"}}>{photo.title}<img src={photo_url} alt="pugs" ></img></li></ul>
+        <div key={i}>
+            <div style={style.grid}>{photo.title}<img src={photo_url} alt="pugs" ></img></div>
         </div>
       );
     });
@@ -32,13 +50,30 @@ export default class Photos extends Component {
   }
 
   render() {
+    let style = {
+      container: {
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "flexStart",
+        justifyContent: "spaceBetween"
+      },
+      background: {
+        backgroundColor: "#EBFFFF"
+      },
+      grid: {
+        marginLeft: 20,
+        gridColumn: {
+          paddingLeft: 20
+        }
+      }
+    }
     return(
       <div>
         <h1>Photos List</h1>
-
-        {this.photoMap()}
+        <div style={style.background, style.container}>
+            {this.photoMap()}
+        </div>
       </div>
-
     )
   }
 }
