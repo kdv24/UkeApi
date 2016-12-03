@@ -18,7 +18,8 @@ export default class Photos extends Component {
   }
 
   handleSubmit(event) {
-    fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=51a81174403dc17c24787f0cce329fef&format=json&nojsoncallback=1&tags=' + this.state.value).then(function(response) {
+    fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=51a81174403dc17c24787f0cce329fef&format=json&nojsoncallback=1&tags=' + this.state.value)
+    .then(function(response) {
       return response.json();
     }).then(function(json) {
         this.setState({
@@ -60,13 +61,12 @@ export default class Photos extends Component {
     }
 
     let photo_titles = this.state.photo_array.map((photo, i) => {
-      let photo_name = photo.title;
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';
       return (
         <div key={i} style={[style.outerContainer, style.background]}>
             <div style={style.grid}>
-              <img src={photo_url} alt={photo_name} ></img>
+              <img src={photo_url} alt="pugs" ></img>
               <p>{photo.title}</p>
             </div>
         </div>

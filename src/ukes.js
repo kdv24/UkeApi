@@ -31,10 +31,11 @@ export default class Ukes extends Component {
           for(var i = 0; i < chords.length; i++) {
               var chord = chord[i];
               var chord_name = chord.getElementsByTagName("chord_name");
-              // for(var j = 0; j < chord_name.length; j++) {
-              //     alert(names[j].childNodes[0].nodeValue);
-              // }
-          }      });
+              for(var j = 0; j < chord_name.length; j++) {
+                  alert(chord_name[j].childNodes[0].nodeValue);
+              }
+          }
+        });
         // return this.parseXML(response);
     });
   }
