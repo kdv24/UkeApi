@@ -4,71 +4,42 @@ export default class Photos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      photos: {}
-    };
-
-    // this.onChange = this.onChange.bind(this);
-  }
-
-  componentWillMount() {
-    this.fetchDemo({
-        photos: this.state.photos,
-    })
-    console.log("in component will mount: ", this.state.photos);
-
-  }
-
-  // onChange() {
-  //   let photos = this.state.photos;
-  //
-  //   this.setState({
-  //     photos: photos
-  //   });
-  //   this.fetchDemo();
-  // }
-
-
-  fetchDemo() {
-    let photos;
-    let photo_array;
-    // let single_photo;
+      photo_array: []
+    }
     fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=51a81174403dc17c24787f0cce329fef&format=json&nojsoncallback=1&tags=penguins').then(function(response) {
       return response.json();
     }).then(function(json) {
-      this.setState({
-        photos: json.photos,
-        photo_array: json.photos.photo
-      })
-      // single_photo = json.photos.photo;
-      console.log("these are the photos: ", photos);
-      console.log("this is an array of photos: ", photo_array);
-      console.log("this is a single photo: ", photo_array[0].id);
-      return photos;
-    });
+        this.setState({
+          json: json,
+          photo_array: json.photos.photo,
+        });
+        // this.photoMap();
+    }.bind(this));
   }
 
-  // photoMap() {
-  //
-  // }
+  photoMap() {
+    let photo_array = this.state.photo_array;
+    console.log("photo_array in the photoMap: ", photo_array[0]);
 
+    let photo_titles = this.state.photo_array.map((photo, i) => {
+      return (
+        <div className="container" key={i}>
+            <ul><li style={{listStyle: "none"}}>{photo.title} </li></ul>
+        </div>
+      );
+    });
+    return photo_titles;
+  }
 
   render() {
-    console.log("this is the photo array state: ", this.state.photos);
-
-    let all_the_marbles = this.state.photo_array.map((photo, index) => {
-      let photo_id = this.state.photo.id;
-      let photo_title = this.state.photo.title;
-    return (
+    let photo_titles = this.state.photo_titles;
+    return(
       <div>
-        <p>{photo_id}</p>
-        <p>{photo_title}</p>
+        <h1>Photos List</h1>
+
+        {this.photoMap()}
       </div>
-    );
-  });
-  return (
-    <div>
-      <ul><li>{all_the_marbles}</li></ul>
-    </div>
-  )
+
+    )
   }
 }

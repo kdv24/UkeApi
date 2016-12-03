@@ -10,10 +10,10 @@ class App extends Component {
 
     fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
     .then(function(response) {
-        console.log("in the fetch: ");
+        // console.log("in the fetch: ");
     })
     .then(function() {
-      console.log("in the promise");
+      // console.log("in the promise");
     });
 
     return (
