@@ -5,17 +5,28 @@ export default class Photos extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      photo_array: []
+      photo_array: [],
+      tag: undefined,
+      value: ''
     }
-    fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=51a81174403dc17c24787f0cce329fef&format=json&nojsoncallback=1&tags=pugs').then(function(response) {
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    fetch('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=51a81174403dc17c24787f0cce329fef&format=json&nojsoncallback=1&tags=' + this.state.value).then(function(response) {
       return response.json();
     }).then(function(json) {
         this.setState({
           json: json,
           photo_array: json.photos.photo,
         });
-        // this.photoMap();
     }.bind(this));
+    event.preventDefault();
   }
 
   photoMap() {
@@ -24,7 +35,7 @@ export default class Photos extends Component {
         display: "flex",
         flexWrap: "wrap",
         alignItems: "flexStart",
-        justifyContent: "center"
+        justifyContent: "center",
       },
       outerContainer: {
         padding: 10,
@@ -33,7 +44,9 @@ export default class Photos extends Component {
 
       },
       background: {
-        backgroundColor: "blue"
+        backgroundColor: "blue",
+        // backgroundImage: 'url(https://wallpaperscraft.com/image/wall_brick_structure_surface_27260_3840x2400.jpg)',
+        // backgroundSize: "cover",
       },
       grid: {
         margin: 20,
@@ -52,7 +65,7 @@ export default class Photos extends Component {
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';
       return (
-        <div key={i} style={style.outerContainer}>
+        <div key={i} style={[style.outerContainer, style.background]}>
             <div style={style.grid}>
               <img src={photo_url} alt="pugs" ></img>
               <p>{photo.title}</p>
@@ -69,17 +82,19 @@ export default class Photos extends Component {
         display: "flex",
         flexWrap: "wrap",
         alignItems: "flexStart",
-        justifyContent: "center"
+        justifyContent: "center",
+        padding: 10
       },
       outerContainer: {
         padding: 10,
         display: "flex",
         justifyContent: "spaceAround",
         alignItems: "justifyContent"
-
       },
       background: {
-        backgroundColor: "#EBFFFF"
+        backgroundImage: 'url(https://wallpaperscraft.com/image/surface_gray_grid_lines_50488_1600x1200.jpg)',
+        backgroundSize: "fixed",
+        padding: 20
       },
       grid: {
         margin: 20,
@@ -99,10 +114,12 @@ export default class Photos extends Component {
       }
     }
     return(
-      <div>
-        <h1>Photos List</h1>
-        <input style={style.button} placeholder="search tags"></input>
-        <button style={style.button} type="submit">button here</button>
+      <div style={style.background}>
+        <h1>Photo Wall</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" id="tags" style={style.button} value={this.state.value} onChange={this.handleChange} placeholder="search tags"></input>
+            <input type="submit" value="Submit" style={style.button} />
+        </form>
         <div style={style.container}>
             {this.photoMap()}
         </div>
