@@ -60,12 +60,13 @@ export default class Photos extends Component {
     }
 
     let photo_titles = this.state.photo_array.map((photo, i) => {
+      let photo_name = photo.title;
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';
       return (
         <div key={i} style={[style.outerContainer, style.background]}>
             <div style={style.grid}>
-              <img src={photo_url} alt="pugs" ></img>
+              <img src={photo_url} alt={photo_name} ></img>
               <p>{photo.title}</p>
             </div>
         </div>
