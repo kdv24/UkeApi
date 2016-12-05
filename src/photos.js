@@ -58,7 +58,7 @@ export default class Photos extends Component {
         borderStyle: "solid"
       }
     }
-    // let photo_array = this.state.photo_array;
+
     let photo_titles = this.state.photo_array.map((photo, i) => {
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
              '/' + photo.id + '_' + photo.secret + '.jpg';

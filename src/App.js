@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import Photos from './photos.js';
+import logo     from './logo.svg';
+import Photos   from './photos.js';
+import Ukes     from  './ukes.js';
 import './App.css';
 
 class App extends Component {
 
-  render() {
 
-    fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
-    .then(function(response) {
-        // console.log("in the fetch: ", response);
-    })
-    .then(function() {
-      // console.log("in the promise");
-    });
+  render() {
 
     return (
       <div className="App">
@@ -25,6 +19,7 @@ class App extends Component {
           on app.js page
         </p>
         <Photos/>
+        <Ukes />
       </div>
     );
   }
