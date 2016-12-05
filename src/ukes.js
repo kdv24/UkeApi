@@ -26,7 +26,15 @@ export default class Ukes extends Component {
       let xml = "<root>" + response + "</root>";
       parseString(xml, function (err, result) {
           console.dir(result);
-      });
+
+          var chords = xml.getElementsByTagName("chord");
+          for(var i = 0; i < chords.length; i++) {
+              var chord = chord[i];
+              var chord_name = chord.getElementsByTagName("chord_name");
+              // for(var j = 0; j < chord_name.length; j++) {
+              //     alert(names[j].childNodes[0].nodeValue);
+              // }
+          }      });
         // return this.parseXML(response);
     });
   }
