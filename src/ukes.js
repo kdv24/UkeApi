@@ -11,21 +11,24 @@ export default class Ukes extends Component {
       ukes_array: [],
     }
   }
-  // parseXML(response) {
-  //   let parseString = xml2js.parseString;
-  //   let xml = "<root>" + response + "</root>";
-  //   parseString(xml, function (err, result) {
-  //       console.dir(result);
-  //   });
-  // }
+
+  parseXML(response) {
+    let parseString = xml2js.parseString;
+    let xml = "<root>" + response + "</root>";
+    parseString(xml, function (err, result) {
+        console.log(parseString);
+    });
+  }
 
   getChords(){
     fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
     .then(function(response) {
+      console.dir("response: ", response);
+
       let parseString = xml2js.parseString;
       let xml = "<root>" + response + "</root>";
       parseString(xml, function (err, result) {
-          console.dir(result);
+          console.log(result);
 
           var chords = xml.getElementsByTagName("chord");
           for(var i = 0; i < chords.length; i++) {
@@ -36,6 +39,7 @@ export default class Ukes extends Component {
               }
           }
         });
+        console.log(xml);
         // return this.parseXML(response);
     });
   }
