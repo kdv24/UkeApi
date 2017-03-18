@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import style                from './style.js';
 // import $                    from 'jquery';
 import xml2js               from 'xml2js';
+import xml2json             from 'xml2json';
 
 
 export default class Ukes extends Component {
@@ -12,13 +13,28 @@ export default class Ukes extends Component {
     }
   }
 
-  parseXML(response) {
-    let parseString = xml2js.parseString;
-    let xml = "<root>" + response + "</root>";
-    parseString(xml, function (err, result) {
-        console.log(parseString);
-    });
-  }
+  // parseXML(response) {
+  //   let parseString = xml2js.parseString;
+  //   let xml = "<root>" + response + "</root>";
+  //   parseString(xml, function (err, result) {
+  //       console.log(parseString);
+  //   });
+  // }
+
+///////////  JUST ADDED NEW NPM PACKAGE TO TRY  //////////////
+  var parser = require('xml2json');
+
+  var xml = "<foo attr=\"value\">bar</foo>";
+  console.log("input -> %s", xml)
+
+  // xml to json
+  var json = parser.toJson(xml);
+  console.log("to json -> %s", json);
+
+  // json to xml
+  var xml = parser.toXml(json);
+  console.log("back to xml -> %s", xml)
+/////////////////////////////////////////////
 
   getChords(){
     fetch('http://ukulele-chords.com/get?ak=d41d8cd98f00b204e9800998ecf8427e&r=D&typ=major', {mode: 'no-cors'})
