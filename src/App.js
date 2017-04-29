@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import logo     from './logo.svg';
-import Photos   from './photos.js';
-import Ukes     from  './ukes.js';
+import Photos   from './photos/photos.js';
+// import Ukes     from  './ukes.js';
+// import MySpotify  from './spotify/myspotify.js';
+import Maps       from './google_maps/maps.js';
 import './App.css';
 
 export default class App extends Component {
@@ -18,8 +20,10 @@ export default class App extends Component {
         <p className="App-intro">
           on app.js page
         </p>
+        <Maps/>
         <Photos/>
-        <Ukes />
+        {/* <MySpotify/> */}
+        {/* <Ukes /> */}
       </div>
     );
   }

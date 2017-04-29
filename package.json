@@ -6,8 +6,10 @@
     "react-scripts": "0.7.0"
   },
   "dependencies": {
+    "google-maps-react": "^1.0.19",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-dom": "^15.4.0",
+    "spotify-web-api-js": "^0.21.2"
   },
   "scripts": {
     "start": "react-scripts start",

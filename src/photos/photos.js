@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import style                from './style.js';
+import Style                from './style.js';
 
 export default class Photos extends Component {
   constructor(props) {
@@ -30,35 +30,7 @@ export default class Photos extends Component {
   }
 
   photoMap() {
-    let style = {
-      container: {
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "flexStart",
-        justifyContent: "center",
-      },
-      outerContainer: {
-        padding: 10,
-        display: "flex",
-        justifyContent: "spaceAround",
-
-      },
-      background: {
-        backgroundColor: "blue",
-      },
-      grid: {
-        margin: 20,
-        padding: 5,
-        backgroundColor: "darkGray",
-        gridColumn: {
-          paddingLeft: 20
-        },
-        borderColor: "gray",
-        borderWidth: 2,
-        borderStyle: "solid"
-      }
-    }
-
+    let style=Style;
     let photo_titles = this.state.photo_array.map((photo, i) => {
       let photo_name = photo.title;
       let photo_url = 'https://farm' + photo.farm + '.staticflickr.com/' + photo.server +
@@ -76,42 +48,7 @@ export default class Photos extends Component {
   }
 
   render() {
-    let style = {
-      container: {
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "flexStart",
-        justifyContent: "center",
-        padding: 10
-      },
-      outerContainer: {
-        padding: 10,
-        display: "flex",
-        justifyContent: "spaceAround",
-        alignItems: "justifyContent"
-      },
-      background: {
-        backgroundImage: 'url(https://wallpaperscraft.com/image/surface_gray_grid_lines_50488_1600x1200.jpg)',
-        backgroundSize: "fixed",
-        padding: 20
-      },
-      grid: {
-        margin: 20,
-        gridColumn: {
-          paddingLeft: 20
-        }
-      },
-      button: {
-        padding: 10,
-        margin: 5,
-        borderRadius: 10
-      },
-      border: {
-        borderColor: "gray",
-        borderWidth: 2,
-        borderStyle: "solid"
-      }
-    }
+    let style = Style;
     return(
       <div style={style.background}>
         <h1>Photo Wall</h1>
