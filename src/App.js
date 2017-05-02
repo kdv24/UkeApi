@@ -20,9 +20,9 @@ export default class App extends Component {
         <p className="App-intro">
           on app.js page
         </p>
-        <Maps/>
         <Photos/>
-        {/* <MySpotify/> */}
+          {/* <MySpotify/> */}
+        <Maps/>
         {/* <Ukes /> */}
       </div>
     );

@@ -11,26 +11,28 @@ import Style                from './style.js';
   render() {
     let style = Style;
       return (
-        <Map
-          google={this.props.google}
-          zoom={4}
-          style={style}
-          initialCenter={{
-            lat: 40.854885,
-            lng: -88.081807
-          }}
-          onClick={this.onMapClicked}
+        <div classname={style.backgroundColor}>
+          <h2>Playing with Google Maps API</h2>
+          <Map
+            google={this.props.google}
+            zoom={2}
+            style={style}
+            initialCenter={{
+              lat: 10.0,
+              lng: -150
+            }}
+            onClick={this.onMapClicked}
+          >
+            <Marker onClick={this.onMarkerClick}
+                    name={'Current location'} />
+            {/* <InfoWindow onClose={this.onInfoWindowClose}>
+                <div>
+                  <h1>{this.state.selectedPlace.name}</h1>
+                </div>
+            </InfoWindow> */}
+          </Map>
+        </div>
 
-        >
-
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} />
-          {/* <InfoWindow onClose={this.onInfoWindowClose}>
-              <div>
-                <h1>{this.state.selectedPlace.name}</h1>
-              </div>
-          </InfoWindow> */}
-        </Map>
       );
     }
   }

@@ -6,6 +6,8 @@ let style = {
     borderColor: "gray",
     borderWidth: 2,
     borderStyle: "solid"
-  }
+  },
+  backgroundColor: 'purple',
+  width: '500px'
 }
 module.exports = style;
